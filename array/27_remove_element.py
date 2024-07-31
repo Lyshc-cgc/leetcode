@@ -1,4 +1,5 @@
 # 27. 移除元素
+# https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html
 # https://leetcode.cn/problems/remove-element/
 from typing import List
 

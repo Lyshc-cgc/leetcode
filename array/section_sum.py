@@ -26,6 +26,13 @@ def main():
         except:
             break
 
+def test():
+    while 1:
+        try:
+            print(input().strip())
+        except:
+            break
+
 if __name__ == '__main__':
     main()
-
+    # test()

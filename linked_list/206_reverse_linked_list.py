@@ -3,7 +3,7 @@
 # https://leetcode.cn/problems/reverse-linked-list/description/
 
 from typing import Optional
-from utils.func_util import print_linked_list
+from utils import linked_list_util
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -53,15 +53,11 @@ class Solution:
 
 if __name__ == '__main__':
     nums = [1,2,3,4,5]
-    current = head = ListNode(nums[0])
-    for num in nums[1:]:
-        p = ListNode(num)
-        current.next = p
-        current = p
-    print_linked_list(head)
+    head = linked_list_util.init_lined_list(nums)
+    linked_list_util.print_linked_list(head)
     print('--------')
     s = Solution()
     # s.reverseList1(head, None)
     # print_linked_list(s.head)
     # print('-------')
-    print_linked_list(s.reverseList(head))
+    linked_list_util.print_linked_list(s.reverseList(head))

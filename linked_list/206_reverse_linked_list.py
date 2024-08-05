@@ -50,6 +50,13 @@ class Solution:
         current.next.next = current
         return current
 
+    def reverseList1(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        pre, last = None, head
+        while last:
+            p = last.next
+            last.next = pre
+            pre, last = last, p
+        return pre
 
 if __name__ == '__main__':
     nums = [1,2,3,4,5]
@@ -60,4 +67,4 @@ if __name__ == '__main__':
     # s.reverseList1(head, None)
     # print_linked_list(s.head)
     # print('-------')
-    linked_list_util.print_linked_list(s.reverseList(head))
+    linked_list_util.print_linked_list(s.reverseList1(head))

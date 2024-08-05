@@ -38,11 +38,19 @@ class Solution:
         :param head:
         :return:
         """
-        pass
+        current = dummy_head = ListNode(0, head)
+        while current.next and current.next.next:  # 只有当下一个和下下一个节点不为空才能进行交换
+            f_node, l_node = current.next, current.next.next
+            p = l_node.next
+            current.next = l_node
+            l_node.next = f_node
+            f_node.next = p
+            current = f_node  # f_node是交换后的右边结点
+        return dummy_head.next
 
 if __name__ == '__main__':
     nums = [1,2,3,4]
     head = linked_list_util.init_lined_list(nums)
     linked_list_util.print_linked_list(head)
     print('--------')
-    linked_list_util.print_linked_list(Solution().swapPairs(head))
+    linked_list_util.print_linked_list(Solution().swapPairs1(head))

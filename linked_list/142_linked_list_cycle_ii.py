@@ -30,3 +30,16 @@ class Solution:
             index1 = index1.next
 
         return index0
+
+    def detectCycle1(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        seen = set()
+        current = head
+        while current:
+            if current in seen:
+                return current
+            else:
+                seen.add(current)
+            current = current.next
+        return None

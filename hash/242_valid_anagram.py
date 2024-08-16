@@ -18,5 +18,13 @@ class Solution:
                 t_dict[e] = 1
         return s_dict == t_dict
 
+    def isAnagram1(self, s: str, t: str) -> bool:
+        counter_s, counter_t = dict(), dict()
+        for e in s:
+            counter_s[e] = counter_s.get(e, 0) + 1
+        for e in t:
+            counter_t[e] = counter_t.get(e, 0) + 1
+        return counter_s == counter_t
+
 if __name__ == '__main__':
-    print(Solution().isAnagram("anagram", "nagaram"))  # True
+    print(Solution().isAnagram1("anagram", "nagaram"))  # True

@@ -12,8 +12,7 @@ class Solution:
         """
         nums = sorted(nums)
         res = []
-        if len(nums) < 3:
-            return res
+
         for i in range(len(nums)):
             if nums[i] > 0:  # 三元组中最小的数大于0，和不可能为0
                 return res

@@ -3,6 +3,7 @@
 # https://leetcode.cn/problems/binary-tree-preorder-traversal/description/
 
 from typing import List, Optional
+from collections import deque
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -43,6 +44,30 @@ class Solution:
                 stack.append(p.left)
         return res
 
+    def uni_inter(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        统一风格迭代法
+        :param root:
+        :return:
+        """
+        stack = deque()
+        res = []
+        if not root:
+            return res
+        stack.append(root)
+        while stack:
+            top = stack.pop()
+            if top:  # 若不为空，则继续遍历
+                if top.right:
+                    stack.append(top.right)
+                if top.left:
+                    stack.append(top.left)
+                stack.append(top)
+                stack.append(None)
+            else:  # 若为空，则操作栈顶结点
+                top = stack.pop()
+                res.append(top.val)
+        return res
 
 if __name__ == '__main__':
 

@@ -21,6 +21,42 @@ class Solution:
             res = ' ' + s[slow: fast]  + res
         return res[1:]  # 去掉第一个空格
 
+    def reverse(self, s, start, end):  # 左闭右闭
+        l, r = start, end
+        while l < r:
+            s[l], s[r] = s[r], s[l]
+            l += 1
+            r -= 1
+        return s
+    def reverseWords0(self, s):
+        s = list(s)
+        # 清除多余空格
+        slow, fast = 0, 0
+        while fast < len(s):
+            if s[fast] != ' ':
+                s[slow] = s[fast]
+                slow += 1
+                fast += 1
+            else:  # s[fast] == ' '
+                if slow != 0:
+                    s[slow] = ' '  # 手动加一个空格
+                    slow += 1
+                while fast < len(s) and s[fast] == ' ':
+                    fast += 1
+        if s[-1] == ' ':
+            s = s[:slow - 1]  # s最后有个空格
+        else:
+            s = s[:slow]
+        s = self.reverse(s, 0, len(s) - 1)
+        start = 0
+        for i in range(len(s)):
+            if s[i] == ' ':
+                s = self.reverse(s, start, i - 1)
+                start = i + 1
+        s = self.reverse(s, start, len(s) - 1)
+
+        return ''.join(s)
+
 if __name__ == '__main__':
     s = "the sky is blue"
     print(Solution().reverseWords(s))  # "blue is sky the"

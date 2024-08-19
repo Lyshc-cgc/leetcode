@@ -36,3 +36,30 @@ class Solution:
             if p.right:  # 右孩子，先处理
                 stack.append(p.right)
         return res[::-1]
+
+    def uni_inter(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        统一风格迭代法
+        :param root:
+        :return:
+        """
+        stack = deque()
+        res = []
+        if not root:
+            return res
+        stack.append(root)
+        while stack:
+            top = stack.pop()
+            if top:  # 若不为空，则继续遍历
+                stack.append(top)
+                stack.append(None)
+                if top.right:
+                    stack.append(top.right)
+                if top.left:
+                    stack.append(top.left)
+            else:  # 若为空，则操作栈顶结点
+                top = stack.pop()
+                res.append(top.val)
+        return res
+
+

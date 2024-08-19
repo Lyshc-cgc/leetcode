@@ -2,6 +2,7 @@
 # https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE
 # https://leetcode.cn/problems/binary-tree-inorder-traversal/description/
 from typing import List, Optional
+from collections import deque
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -40,4 +41,29 @@ class Solution:
                 cur = stack.pop()  # 中
                 res.append(cur.val)
                 cur = cur.right  # 右
+        return res
+
+    def uni_inter(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        统一风格迭代法
+        :param root:
+        :return:
+        """
+        stack = deque()
+        res = []
+        if not root:
+            return res
+        stack.append(root)
+        while stack:
+            top = stack.pop()
+            if top:  # 若不为空，则继续遍历
+                if top.right:
+                    stack.append(top.right)
+                stack.append(top)
+                stack.append(None)
+                if top.left:
+                    stack.append(top.left)
+            else:  # 若为空，则操作栈顶结点
+                top = stack.pop()
+                res.append(top.val)
         return res

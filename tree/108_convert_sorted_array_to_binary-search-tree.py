@@ -15,8 +15,8 @@ class Solution:
         if end - start == 1:  # 叶子节点
             return TreeNode(nums[start])
             # 中
-        if end > start:
-            mid = (end + start) // 2
+        if end > start:  # 左闭右开，只能让end大于start， 小于等于定义空
+            mid = (end + start) // 2  # left + (right - left) // 2防止越界
             node = TreeNode(nums[mid])
             node.left = self.traversal(nums, start, mid)  # 左
             node.right = self.traversal(nums, mid + 1, end)  # 右

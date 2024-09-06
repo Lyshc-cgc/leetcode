@@ -3,7 +3,6 @@
 # https://leetcode.cn/problems/maximum-binary-tree/description/
 
 from typing import Optional, List
-import heapq
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):

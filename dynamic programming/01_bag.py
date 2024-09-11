@@ -2,6 +2,14 @@
 # https://programmercarl.com/%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%8001%E8%83%8C%E5%8C%85-1.html#%E6%80%9D%E8%B7%AF
 
 def bag(values, weights, M, N):
+    """
+
+    :param values:
+    :param weights:
+    :param M: 物品
+    :param N: 容量
+    :return:
+    """
     dp = [[0] * (N + 1) for _ in range(M)]  # dp[i][j]表示从[0,i]中选择物品，放进容量为j的背包里，价值总和最大值
 
     # 1.初始化
